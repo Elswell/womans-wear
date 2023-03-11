@@ -1,19 +1,21 @@
 import React from "react";
 import useStore from "../context/StoreContext";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { SEO, Button, Layout } from "../components";
+import { Seo, Button, Layout, Modal } from "../components";
 import { GrFormClose } from "react-icons/gr";
-import Modal from "../components/Modal";
 
 const DesktopBody = () => {
-  const { cart, checkout, removeLineItem, error } = useStore();
+  const { checkout, removeLineItem } = useStore();
 
   return (
     <tbody className="border-b-[1px] border-myLightGray mob:hidden lg:table-header-group">
       {checkout.lineItems.map((item, i) => (
         <tr className="[&>td]:p-4" key={i}>
           <td className="flex space-x-2">
-            <img src={item.variant.image.src} width="84px" />
+            <img
+              src={item.variant.image.src}
+              width="90px"
+              alt={`${item.title}`}
+            />
             <div className="flex flex-col text-lg max-w-[200px] uppercase">
               <span>{item.title}</span>
               <div className="mt-2 border-gray-600 border-[1px] self-start flex items-center justify-center">
@@ -48,14 +50,18 @@ const DesktopBody = () => {
 };
 
 const MobileBody = () => {
-  const { cart, checkout, removeLineItem, error } = useStore();
+  const { checkout, removeLineItem } = useStore();
 
   return (
     <tbody className="border-b-[1px] border-myLightGray lg:hidden">
       {checkout.lineItems.map((item, i) => (
         <tr className="[&>td]:p-4" key={i}>
           <td className="flex space-x-2">
-            <img src={item.variant.image.src} width="90px" />
+            <img
+              src={item.variant.image.src}
+              width="90px"
+              alt={`${item.title}`}
+            />
             <div className="flex flex-col text-lg max-w-[200px] uppercase">
               <span>{item.title}</span>
               <div className="mt-2 border-gray-600 border-[1px] self-start flex items-center justify-center">
@@ -91,13 +97,13 @@ const MobileBody = () => {
 };
 
 const Cart = ({ data }) => {
-  const { cart, checkout, removeLineItem, error } = useStore();
+  const { checkout, error } = useStore();
 
   return (
     <Layout>
-      <SEO />
+      <Seo />
       <h2 className="text-[48px] text-center my-[62px]">Shopping Cart</h2>
-      {checkout.lineItems.length != 0 ? (
+      {checkout.lineItems.length !== 0 ? (
         <div className="max-w-[1440px] lg:m-auto flex lg:flex-row mob:mx-4 mob:space-y-8 lg:space-y-0 lg:space-x-8 mob:flex-col items-center">
           <div className="mob:w-full lg:w-2/3 flex flex-col">
             <table className="text-left w-full">

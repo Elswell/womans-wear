@@ -17,7 +17,7 @@ const classes = {
   },
 };
 
-const Modal = ({
+export const Modal = ({
   children,
   variant = "success",
   icon = "success",
@@ -33,5 +33,3 @@ const Modal = ({
     </div>
   );
 };
-
-export default Modal;

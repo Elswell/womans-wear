@@ -1,6 +1,4 @@
 import React from "react";
-import { CarouselP } from "./CarouselP";
-import { useStaticQuery, graphql } from "gatsby";
 import FetchFeaturedItems from "../hooks/FetchFeaturedItems";
 
 export const ProductsCarousel = () => {

@@ -2,7 +2,7 @@ import { graphql } from "gatsby";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { FilterSidebar, Layout, ProductCard, SEO } from "../components";
+import { FilterSidebar, Layout, ProductCard, Seo } from "../components";
 import ProductsLayout from "../components/ProductsLayout";
 import { BottomHero } from "../sections";
 import { useQuery, gql } from "@apollo/client";
@@ -13,10 +13,6 @@ export default function CollectionPage({ data }) {
   const [price, setPrice] = useState([0, 250]);
   const [filteredSize, setFilteredSize] = useState();
   const [filteredPrice, setFilteredPrice] = useState();
-  const [activeFilters, setActiveFilters] = useState({
-    activeSize: [],
-    activePrize: [],
-  });
 
   const { products: collectionProducts } = data.allShopifyCollection.nodes[0];
   const [current, setCurrent] = useState(collectionProducts);
@@ -27,31 +23,27 @@ export default function CollectionPage({ data }) {
   const lte = price[1];
   const gte = price[0];
 
-  const {
-    loading: priceLoading,
-    error: priceError,
-    data: priceData,
-    refetch: refetchPriceRange,
-  } = useQuery(PRODUCTS_QUERY_PRICE_RANGE, {
-    variables: { slug, gte, lte },
-    errorPolicy: false,
-    onCompleted: (priceData) => {
-      setFilteredPrice(priceData.allShopifyProduct.nodes);
-    },
-  });
+  const { data: priceData, refetch: refetchPriceRange } = useQuery(
+    PRODUCTS_QUERY_PRICE_RANGE,
+    {
+      variables: { slug, gte, lte },
+      errorPolicy: false,
+      onCompleted: (priceData) => {
+        setFilteredPrice(priceData.allShopifyProduct.nodes);
+      },
+    }
+  );
 
-  const {
-    loading: sizeLoading,
-    error: sizeError,
-    data: sizeData,
-    refetch: refetchSize,
-  } = useQuery(PRODUCTS_QUERY_SIZE, {
-    variables: { slug, size },
-    errorPolicy: false,
-    onCompleted: (sizeData) => {
-      setFilteredSize(sizeData.allShopifyProduct.nodes);
-    },
-  });
+  const { data: sizeData, refetch: refetchSize } = useQuery(
+    PRODUCTS_QUERY_SIZE,
+    {
+      variables: { slug, size },
+      errorPolicy: false,
+      onCompleted: (sizeData) => {
+        setFilteredSize(sizeData.allShopifyProduct.nodes);
+      },
+    }
+  );
 
   const handleFilter = (range, productSize) => {
     if (range && productSize) {
@@ -97,7 +89,7 @@ export default function CollectionPage({ data }) {
 
   return (
     <Layout>
-      <SEO />
+      <Seo />
       <BottomHero />
       <ProductsLayout
         products={current?.map((data, i) => (

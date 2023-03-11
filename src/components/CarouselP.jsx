@@ -1,8 +1,8 @@
 import React from "react";
-import { ProductCard, Button } from "../components";
 import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import { ProductCard } from "../components";
 import { BiChevronRight, BiChevronLeft } from "react-icons/bi";
+import "react-multi-carousel/lib/styles.css";
 
 const ButtonGroup = ({ next, previous, ...rest }) => {
   const {

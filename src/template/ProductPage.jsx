@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { SEO, Button, Layout } from "../components/";
+import { Seo, Button, Layout, Modal } from "../components/";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
@@ -12,13 +12,11 @@ import {
 import { Field, Form, Formik } from "formik";
 import { cls } from "../util/cls";
 import useStore from "../context/StoreContext";
-import Modal from "../components/Modal";
 
 export default function ProductPage({ data }) {
   const { title, descriptionHtml, featuredImage, options, variants } =
     data.shopifyProduct;
   const [color, size] = options;
-  const [variantTitle, shopifyId] = variants;
   const { amount, currencyCode } =
     data.shopifyProduct.priceRangeV2.maxVariantPrice;
   const image = getImage(featuredImage);
@@ -48,7 +46,7 @@ export default function ProductPage({ data }) {
 
   return (
     <Layout>
-      <SEO />
+      <Seo />
       <div className="max-w-[1440px] m-auto flex my-16 mob:flex-col mob:items-center lg:items-start lg:flex-row ">
         <div className="flex flex-1 flex-col space-y-2 relative">
           <GatsbyImage

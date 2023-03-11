@@ -1,11 +1,11 @@
 import * as React from "react";
-import { Layout, SEO, ProductsCarousel } from "../components";
+import { Layout, Seo, ProductsCarousel } from "../components";
 import { Hero, Content, ProductsCatalog, BottomHero } from "../sections";
 
 export default function Home() {
   return (
     <Layout>
-      <SEO />
+      <Seo />
       <Hero />
       <Content />
       <ProductsCatalog />

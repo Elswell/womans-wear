@@ -1,9 +1,8 @@
 import React from "react";
-import { Container, Button } from "../components/";
+import { Button } from "../components/";
 
 export const Content = () => {
   return (
-    // <Container>
     <section className="mx-4">
       <div className="w-full flex lg:flex-row mob:flex-col mob:space-y-[20px] lg:space-y-0 lg:space-x-[20px]">
         <div className="flex flex-col space-y-[20px] lg:w-1/2 mob:w-full">
@@ -45,6 +44,5 @@ export const Content = () => {
         </div>
       </div>
     </section>
-    // </Container>
   );
 };
