@@ -1,6 +1,6 @@
 import React from "react";
 import useStore from "../context/StoreContext";
-import { Seo, Button, Layout, Modal } from "../components";
+import { Button, Layout, Modal } from "../components";
 import { GrFormClose } from "react-icons/gr";
 
 const DesktopBody = () => {
@@ -101,7 +101,6 @@ const Cart = ({ data }) => {
 
   return (
     <Layout>
-      <Seo />
       <h2 className="text-[48px] text-center my-[62px]">Shopping Cart</h2>
       {checkout.lineItems.length !== 0 ? (
         <div className="max-w-[1440px] lg:m-auto flex lg:flex-row mob:mx-4 mob:space-y-8 lg:space-y-0 lg:space-x-8 mob:flex-col items-center">
@@ -169,3 +168,11 @@ const Cart = ({ data }) => {
 };
 
 export default Cart;
+
+export const Head = () => (
+  <>
+    <html lang="en" />
+    <title>Elleven</title>
+    <meta name="description" content="Elleven Womans Wear" />
+  </>
+);

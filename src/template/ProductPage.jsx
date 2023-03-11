@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Seo, Button, Layout, Modal } from "../components/";
+import { Button, Layout, Modal } from "../components/";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
@@ -46,7 +46,6 @@ export default function ProductPage({ data }) {
 
   return (
     <Layout>
-      <Seo />
       <div className="max-w-[1440px] m-auto flex my-16 mob:flex-col mob:items-center lg:items-start lg:flex-row ">
         <div className="flex flex-1 flex-col space-y-2 relative">
           <GatsbyImage
@@ -199,6 +198,14 @@ export default function ProductPage({ data }) {
     </Layout>
   );
 }
+
+export const Head = () => (
+  <>
+    <html lang="en" />
+    <title>Elleven</title>
+    <meta name="description" content="Elleven Womans Wear" />
+  </>
+);
 
 export const query = graphql`
   query ProductPageDetails($slug: String) {

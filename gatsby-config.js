@@ -27,6 +27,7 @@ module.exports = {
       resolve: "gatsby-plugin-html-attributes",
       options: {
         lang: "en",
+        title: "Elleven",
         description: "Womans Wear ELLEVEN",
       },
     },

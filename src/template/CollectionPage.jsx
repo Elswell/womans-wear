@@ -2,7 +2,7 @@ import { graphql } from "gatsby";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { FilterSidebar, Layout, ProductCard, Seo } from "../components";
+import { FilterSidebar, Layout, ProductCard } from "../components";
 import ProductsLayout from "../components/ProductsLayout";
 import { BottomHero } from "../sections";
 import { useQuery, gql } from "@apollo/client";
@@ -89,7 +89,6 @@ export default function CollectionPage({ data }) {
 
   return (
     <Layout>
-      <Seo />
       <BottomHero />
       <ProductsLayout
         products={current?.map((data, i) => (
@@ -105,6 +104,14 @@ export default function CollectionPage({ data }) {
     </Layout>
   );
 }
+
+export const Head = () => (
+  <>
+    <html lang="en" />
+    <title>Elleven</title>
+    <meta name="description" content="Elleven Womans Wear" />
+  </>
+);
 
 const PRODUCTS_QUERY_PRICE_RANGE = gql`
   query collectionProductsQueryPriceRange(
