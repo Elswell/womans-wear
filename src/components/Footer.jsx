@@ -10,23 +10,21 @@ export const Footer = () => {
           Elleven
         </div>
         <ul className="[&>li]:text-myDarkGray">
-          <span className="font-semibold text-lg ">FEATURES</span>
+          <li className="font-semibold text-lg ">FEATURES</li>
           <li>Category</li>
           <li>Category</li>
           <li>Category</li>
         </ul>
         <ul className="[&>li]:text-myDarkGray">
-          <span className="font-semibold text-lg [&>li]:text-myDarkGray">
+          <li className="font-semibold text-lg [&>li]:text-myDarkGray">
             FEATURES
-          </span>
+          </li>
           <li>Category</li>
           <li>Category</li>
           <li>Category</li>
         </ul>
-        <ul className="[&>li]:flex [&>li]:items-center [&>li]:space-x-4 ">
-          <span className="font-semibold text-lg [&>li]:text-myDarkGray">
-            FOLLOW US
-          </span>
+        <ul className="[&>li]:flex [&>li]:items-center [&>li]:space-x-4 [&>li]:text-myDarkGray ">
+          <li className="font-semibold text-lg ">FOLLOW US</li>
           <li>
             <AiFillFacebook className="text-[30px]" />
             <span>FACEBOOK</span>

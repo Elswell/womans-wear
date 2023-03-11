@@ -23,5 +23,11 @@ module.exports = {
         shopifyConnections: ["collections"], // source product collections too
       },
     },
+    {
+      resolve: "gatsby-plugin-html-attributes",
+      options: {
+        lang: "en",
+      },
+    },
   ],
 };
