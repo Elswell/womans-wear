@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Oswald", sans-serif;
+}
+
+.carousel-container {
+  display: hidden;
+}
+
+.color-Forest {
+  background-color: #228b22;
+}
+.color-VividCerise {
+  background-color: #da1d81;
+}
+
+.color-PastelBlue {
+  background-color: #a7c7e7;
+}
+
+.color-BlushPink {
+  background-color: #fe828c;
+}
+
+.color-CanaryYellow {
+  background-color: #ffff8f;
+}
+
+.color-ArmyGreen {
+  background-color: #454b1b;
+}
+
+.color-White {
+  background-color: white;
+  border: 1px #e6e6e6 solid;
+}
+
+.color-Stripe {
+  background-color: linear-gradient(to bottom right, #33ccff 0%, #ff99cc 100%);
+  border: 1px #e6e6e6 solid;
+}
+
+.color-Gray {
+  background-color: #808080;
+}
+
+.color-Blue {
+  background-color: #0000ff;
+}
+
+.color-Green {
+  background-color: #008000;
+}
+
+.color-Black {
+  background-color: #000000;
+}
+
+.color-Pink {
+  background-color: #ffc0cb;
+}
+
+.color-Yellow {
+  background-color: #eeee0d;
+}
+
+.color-LightGray {
+  background-color: #d3d3d3;
+}
+
+.color-Khaki {
+  background-color: #f0e68c;
+}
+
+.color-Red {
+  background-color: #ff0000;
+}
+
+.color-PumpkinSpice {
+  background-color: #ff7f50;
+}
+
+.color-Evergreen {
+  background-color: #228b22;
+}
+
+.color-VeryPink {
+  background-color: #ff69b4;
+}
+
+.color-Cream {
+  background-color: #fffdd0;
+}
