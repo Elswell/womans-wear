@@ -46,8 +46,6 @@ export default function ProductPage({ data }) {
     });
   }, [productColor, productSize]);
 
-  console.log(data);
-
   return (
     <Layout>
       <SEO />

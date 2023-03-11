@@ -90,8 +90,6 @@ export default function CollectionPage({ data }) {
     }
   }, [filteredPrice, filteredSize]);
 
-  console.log(current);
-
   useEffect(() => {
     refetchPriceRange();
     refetchSize();
