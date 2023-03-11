@@ -46,7 +46,7 @@ export const Navbar = () => {
         </div>
       </nav>
       {toggleShop ? (
-        <div className="bg-[url('../assets/images/shopmenu.png')] bg-no-repeat bg-cover bg-center absolute z-50 max-w-[1200px] m-auto left-0 right-0 shadow-lg bg-white flex px-10 py-8 space-x-[100px] ">
+        <div className="bg-[url('../assets/images/shopmenu.webp')] bg-no-repeat bg-cover bg-center absolute z-50 max-w-[1200px] m-auto left-0 right-0 shadow-lg bg-white flex px-10 py-8 space-x-[100px] ">
           <ul className="flex flex-col list-none [&>li]:text-myGray space-y-2">
             <li className="text-black text-lg font-medium mb-[16px] border-b-2 border-b-black">
               MENU CATEGORY LIST
