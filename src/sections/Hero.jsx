@@ -4,7 +4,7 @@ import { BsChevronRight, BsChevronLeft } from "react-icons/bs";
 
 export const Hero = () => {
   return (
-    <div className="relative h-[800px] bg-[url('../assets/images/hero.png')] bg-no-repeat bg-cover bg-center m-4 px-4">
+    <div className="relative h-[800px] bg-[url('../assets/images/hero3.png')] bg-no-repeat bg-cover bg-center m-4 px-4">
       <div className="max-w-[1440px] m-auto flex items-center h-full">
         <div className="flex flex-col space-y-6 relative mob:text-center md:text-left w-full">
           <div className="mob:hidden absolute border-t-2 border-r-2 border-black w-1/3 h-[100px] left-14 top-6"></div>
