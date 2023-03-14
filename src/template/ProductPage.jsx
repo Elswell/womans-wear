@@ -21,28 +21,43 @@ export default function ProductPage({ data }) {
     data.shopifyProduct.priceRangeV2.maxVariantPrice;
   const image = getImage(featuredImage);
 
-  const [productColor, setProductColor] = useState();
-  const [productSize, setProductSize] = useState();
+  const [selectedOptions, setSelectedOptions] = useState({
+    color: null,
+    size: null,
+    quantity: 1,
+  });
+
   const [variantId, setVariantId] = useState();
-  const [quantity, setQuantity] = useState(1);
   const { addVariantToCart, removeLineItem, error, checkout } = useStore();
 
   const handleQuantity = (bool) => {
     if (bool) {
-      setQuantity(quantity + 1);
+      setSelectedOptions({
+        ...selectedOptions,
+        quantity: selectedOptions.quantity + 1,
+      });
     } else if (!bool) {
-      quantity === 0 ? setQuantity(0) : setQuantity(quantity - 1);
+      selectedOptions.quantity === 0
+        ? setSelectedOptions({
+            ...selectedOptions,
+            quantity: 0,
+          })
+        : setSelectedOptions({
+            ...selectedOptions,
+            quantity: selectedOptions.quantity - 1,
+          });
     }
   };
 
   useEffect(() => {
-    const combinedVariant = productColor + " / " + productSize;
+    const combinedVariant =
+      selectedOptions.color + " / " + selectedOptions.size;
     const productID = variants.forEach((item) => {
       if (item.title === combinedVariant) {
         setVariantId(item.shopifyId);
       }
     });
-  }, [productColor, productSize]);
+  }, [selectedOptions.color, selectedOptions.size]);
 
   return (
     <Layout>
@@ -66,13 +81,18 @@ export default function ProductPage({ data }) {
               {({ values }) => (
                 <Form
                   className="flex w-full flex-wrap"
-                  onChange={(e) => setProductColor(e.target.value)}
+                  onChange={(e) =>
+                    setSelectedOptions({
+                      ...selectedOptions,
+                      color: e.target.value,
+                    })
+                  }
                 >
                   {color.values.map((data, i) => (
                     <label
                       className={cls(
                         ` transition-colors flex p-[2px] cursor-pointer ${
-                          productColor === data
+                          selectedOptions.color === data
                             ? "border-[2px] border-black"
                             : "border-[2px] border-transparent hover:border-gray-600 "
                         }`
@@ -98,13 +118,18 @@ export default function ProductPage({ data }) {
               {({ values }) => (
                 <Form
                   className="flex space-x-4"
-                  onChange={(e) => setProductSize(e.target.value)}
+                  onChange={(e) =>
+                    setSelectedOptions({
+                      ...selectedOptions,
+                      size: e.target.value,
+                    })
+                  }
                 >
                   {size.values.map((data, i) => (
                     <label
                       className={cls(
                         ` transition-colors flex p-[2px] cursor-pointer ${
-                          productSize === data
+                          selectedOptions.size === data
                             ? "border-[1px] border-[#000] [&>span]:text-[#000]"
                             : "border-[1px] border-myDarkGray [&>span]:text-myDarkGray hover:border-gray-600 hover:[&>span]:text-gray-600"
                         }`
@@ -133,10 +158,10 @@ export default function ProductPage({ data }) {
                 </button>
                 <input
                   type="text"
-                  value={quantity}
+                  value={selectedOptions.quantity}
                   className={cls(
                     `w-2/4 text-center focus:outline-none ${
-                      quantity === 0 && "text-gray-400"
+                      selectedOptions.quantity === 0 && "text-gray-400"
                     }`
                   )}
                   required
@@ -152,7 +177,10 @@ export default function ProductPage({ data }) {
             <div className="flex flex-col space-y-2">
               <span>PRICE TOTAL</span>
               <span className="font-medium text-[26px]">
-                {quantity !== 0 ? amount * quantity : amount} {currencyCode}
+                {selectedOptions.quantity !== 0
+                  ? amount * selectedOptions.quantity
+                  : amount}{" "}
+                {currencyCode}
               </span>
             </div>
           </div>
@@ -162,7 +190,9 @@ export default function ProductPage({ data }) {
               variant="black"
               size="fixed220"
               className="border-2 border-black hover:border-primary"
-              onClick={() => addVariantToCart(variantId, quantity)}
+              onClick={() =>
+                addVariantToCart(variantId, selectedOptions.quantity)
+              }
             >
               Add to Cart
             </Button>
@@ -221,6 +251,7 @@ export const query = graphql`
       variants {
         shopifyId
         title
+        availableForSale
       }
       featuredImage {
         gatsbyImageData

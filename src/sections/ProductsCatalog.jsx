@@ -17,7 +17,7 @@ export const ProductsCatalog = () => {
           <h2 className="text-[24px] mb-[40px]">Shop Some Wear:</h2>
           <Formik
             initialValues={{
-              collection: "best-sellers",
+              collection: "summer",
             }}
           >
             {({ values }) => (
@@ -26,7 +26,7 @@ export const ProductsCatalog = () => {
                   role="group"
                   className="flex md:flex-col mob:flex-row items-start justify-center mob:space-x-1 md:space-x-0  lg:space-y-2 [&>label]:flex [&>label]:space-x-1  "
                 >
-                  <label>
+                  {/* <label>
                     <Field
                       type="radio"
                       name="collection"
@@ -34,7 +34,7 @@ export const ProductsCatalog = () => {
                       className="mob:self-start md:self-center mob:mt-1 md:mt-0"
                     />
                     <span>BEST SELLERS</span>
-                  </label>
+                  </label> */}
                   <label>
                     <Field
                       type="radio"

@@ -79,9 +79,7 @@ export const FilterSidebar = ({ onSubmit, onReset }) => {
         <div className="border-[1px] p-2 border-black flex flex-col gap-5">
           <div className="flex justify-between items-center">
             <p className="text-3xl">Filters</p>{" "}
-            <p className="cursor-pointer" onClick={() => clearFilters()}>
-              Clear filters
-            </p>
+            <button onClick={() => clearFilters()}>Clear filters</button>
           </div>
           {productSize.length ? (
             <div>
@@ -105,15 +103,17 @@ export const FilterSidebar = ({ onSubmit, onReset }) => {
       )}
 
       <div>
-        <div
-          className="flex justify-between cursor-pointer"
+        <button
           onClick={() => setToggleSize(!toggleSize)}
+          className="flex justify-between w-full"
         >
           <p className="text-2xl">Size</p> <span>-</span>
-        </div>
+        </button>
         <div
           className={cls(
-            `justify-between my-8 ${toggleSize ? "flex" : "hidden"}`
+            `justify-between my-8 transition-all  ${
+              toggleSize ? "flex " : "hidden "
+            }`
           )}
         >
           <Formik>
@@ -142,12 +142,12 @@ export const FilterSidebar = ({ onSubmit, onReset }) => {
         </div>
       </div>
       <div>
-        <div
-          className="flex justify-between cursor-pointer"
+        <button
+          className="flex justify-between w-full"
           onClick={() => setToggleColor(!toggleColor)}
         >
           <p className="text-2xl">Color</p> <span>-</span>
-        </div>
+        </button>
         <div
           className={cls(
             `flex-wrap w-[85%]  my-8 ${toggleColor ? "flex" : "hidden"}`
@@ -185,12 +185,12 @@ export const FilterSidebar = ({ onSubmit, onReset }) => {
         </div>
       </div>
       <div>
-        <div
-          className="flex justify-between cursor-pointer"
+        <button
+          className="flex justify-between w-full"
           onClick={() => setTogglePrice(!togglePrice)}
         >
           <p className="text-2xl">Price</p> <span>-</span>
-        </div>
+        </button>
         <div
           className={cls(
             `my-8 mx-4 ${togglePrice ? "flex flex-col" : "hidden"}`

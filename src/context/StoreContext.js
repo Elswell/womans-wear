@@ -70,7 +70,7 @@ export const StoreProvider = ({ children }) => {
       setCheckoutItem(newCheckout);
     };
     initializeCheckout();
-  }, []);
+  }, [cart, checkout]);
 
   const addVariantToCart = async (variantId, quantity) => {
     if (quantity === 0) {
@@ -105,8 +105,6 @@ export const StoreProvider = ({ children }) => {
         checkoutID,
         lineItemsToUpdate
       );
-
-      console.log(res);
 
       setCheckout({
         ...checkout,
