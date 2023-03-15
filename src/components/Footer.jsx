@@ -5,7 +5,7 @@ import { FaInstagramSquare } from "react-icons/fa";
 export const Footer = () => {
   return (
     <footer className="w-full px-8 bg-black mt-16 text-white py-8">
-      <div className="flex max-w-[1880px] justify-between m-auto [&>ul]:space-y-4">
+      <div className="flex md:flex-row mob:flex-col mob:items-center max-w-[1880px] justify-between m-auto [&>ul]:space-y-4 mob:space-y-8 md:space-y-0">
         <div className="text-[56px] border-b-2 border-white self-start">
           Elleven
         </div>
