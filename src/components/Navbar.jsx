@@ -1,14 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "gatsby";
 import { AiOutlineHeart } from "react-icons/ai";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import useStore from "../context/StoreContext";
+import { useRef } from "react";
 
 export const Navbar = () => {
   const { checkout } = useStore();
+  const [toggleShop, setToggleShop] = useState(false);
   const parsedTotal = parseInt(checkout?.subtotalPriceV2?.amount, 10);
 
-  const [toggleShop, setToggleShop] = useState(false);
+  const useOutsideAlerter = (ref) => {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setToggleShop(false);
+        }
+      }
+
+      document.addEventListener("mousedown", handleClickOutside);
+
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  };
+
+  const shopRef = useRef(null);
+  useOutsideAlerter(shopRef);
 
   return (
     <>
@@ -46,7 +65,10 @@ export const Navbar = () => {
         </div>
       </nav>
       {toggleShop ? (
-        <div className="bg-[url('../assets/images/shopmenu.webp')] bg-no-repeat bg-cover bg-center absolute z-50 max-w-[1200px] m-auto left-0 right-0 shadow-lg bg-white flex px-10 py-8 space-x-[100px] ">
+        <div
+          ref={shopRef}
+          className="bg-[url('../assets/images/shopmenu.webp')] bg-no-repeat bg-cover bg-center absolute z-50 max-w-[1200px] m-auto left-0 right-0 shadow-lg bg-white flex px-10 py-8 space-x-[100px] "
+        >
           <ul className="flex flex-col list-none [&>li]:text-myGray space-y-2">
             <li className="text-black text-lg font-medium mb-[16px] border-b-2 border-b-black">
               CLOTHING
