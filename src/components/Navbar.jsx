@@ -4,10 +4,13 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import useStore from "../context/StoreContext";
 import { useRef } from "react";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { Hamburger } from "./Hamburger";
 
 export const Navbar = () => {
   const { checkout } = useStore();
   const [toggleShop, setToggleShop] = useState(false);
+  const [hamburger, setHamburger] = useState(false);
   const parsedTotal = parseInt(checkout?.subtotalPriceV2?.amount, 10);
 
   const useOutsideAlerter = (ref) => {
@@ -62,8 +65,15 @@ export const Navbar = () => {
               </div>
             </Link>
           </div>
+          <button
+            className="mob:block lg:hidden text-3xl"
+            onClick={() => setHamburger(!hamburger)}
+          >
+            <GiHamburgerMenu />
+          </button>
         </div>
       </nav>
+      {hamburger && <Hamburger closeHamburger={() => setHamburger(false)} />}
       {toggleShop ? (
         <div
           ref={shopRef}
