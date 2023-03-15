@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Field, Form, Formik } from "formik";
 import FetchSummerColection from "../hooks/FetchSummerCollection";
 import FetchBestCollection from "../hooks/FetchBestCollection";
+import FetchActiveWearCollection from "../hooks/FetchActiveWearCollection";
 import { Button } from "../components";
 import { Link } from "gatsby";
-// import FetchWinterCollection from "../hooks/FetchWinterCollection";
 // import FetchTrendingCollection from "../hooks/FetchTrendingCollection";
 
 export const ProductsCatalog = () => {
@@ -26,15 +26,6 @@ export const ProductsCatalog = () => {
                   role="group"
                   className="flex md:flex-col mob:flex-row items-start justify-center mob:space-x-1 md:space-x-0  lg:space-y-2 [&>label]:flex [&>label]:space-x-1  "
                 >
-                  {/* <label>
-                    <Field
-                      type="radio"
-                      name="collection"
-                      value="best-sellers"
-                      className="mob:self-start md:self-center mob:mt-1 md:mt-0"
-                    />
-                    <span>BEST SELLERS</span>
-                  </label> */}
                   <label>
                     <Field
                       type="radio"
@@ -48,19 +39,10 @@ export const ProductsCatalog = () => {
                     <Field
                       type="radio"
                       name="collection"
-                      value="winter"
+                      value="active-wear"
                       className="mob:self-start md:self-center mob:mt-1 md:mt-0"
                     />
-                    <span>COLLECTION: WINTER</span>
-                  </label>
-                  <label>
-                    <Field
-                      type="radio"
-                      name="collection"
-                      value="trending"
-                      className="mob:self-start md:self-center mob:mt-1 md:mt-0"
-                    />
-                    <span>TRENDING</span>
+                    <span>COLLECTION: ACTIVEWEAR</span>
                   </label>
                 </div>
               </Form>
@@ -69,13 +51,11 @@ export const ProductsCatalog = () => {
         </div>
         {/* <div className="lg:max-w-[90%] mob:w-full lg:items-start lg:place-content-start md:grid md:grid-cols-2 lg:grid lg:grid-cols-3 xl:grid-cols-4 min-h-[100vh] px-6"> */}
         <div className="lg:max-w-[85%] mob:w-full px-6 flex flex-wrap gap-[40px] lg:justify-between mob:justify-center mob:mt-16 lg:mt-0">
-          {value === "best-sellers" && <FetchBestCollection />}
           {value === "summer" && <FetchSummerColection />}
-          {/* {value === "winter" && <FetchWinterCollection />}
-          {value === "trending" && <FetchTrendingCollection />} */}
+          {value === "active-wear" && <FetchActiveWearCollection />}
           <div className="w-full flex justify-center">
             <Link to={`/collection/${value}`}>
-              <Button variant="gray">Load More</Button>
+              <Button variant="gray">See More</Button>
             </Link>
           </div>
         </div>

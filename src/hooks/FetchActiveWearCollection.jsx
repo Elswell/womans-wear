@@ -2,14 +2,15 @@ import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { ProductCard } from "../components/ProductCard";
 
-const getBest = graphql`
+const getActiveWear = graphql`
   {
-    shopifyCollection(title: { eq: "Winter" }) {
+    shopifyCollection(title: { eq: "Active Wear" }) {
       products {
         id
         title
         handle
         descriptionHtml
+        tags
         collections {
           title
         }
@@ -27,8 +28,8 @@ const getBest = graphql`
   }
 `;
 
-const FetchBestCollection = () => {
-  const data = useStaticQuery(getBest);
+const FetchActiveWearCollection = () => {
+  const data = useStaticQuery(getActiveWear);
 
   return (
     <>
@@ -39,4 +40,4 @@ const FetchBestCollection = () => {
   );
 };
 
-export default FetchBestCollection;
+export default FetchActiveWearCollection;

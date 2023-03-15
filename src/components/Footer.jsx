@@ -9,31 +9,31 @@ export const Footer = () => {
         <div className="text-[56px] border-b-2 border-white self-start">
           Elleven
         </div>
-        <ul className="[&>li]:text-myDarkGray">
+        <ul className="[&>li]:text-myDarkGray [&>li]:cursor-pointer">
           <li className="font-semibold text-lg ">FEATURES</li>
-          <li>Category</li>
-          <li>Category</li>
-          <li>Category</li>
+          <li className="hover:text-white transition-colors">Category</li>
+          <li className="hover:text-white transition-colors">Category</li>
+          <li className="hover:text-white transition-colors">Category</li>
         </ul>
-        <ul className="[&>li]:text-myDarkGray">
+        <ul className="[&>li]:text-myDarkGray [&>li]:cursor-pointer">
           <li className="font-semibold text-lg [&>li]:text-myDarkGray">
             FEATURES
           </li>
-          <li>Category</li>
-          <li>Category</li>
-          <li>Category</li>
+          <li className="hover:text-white transition-colors">Category</li>
+          <li className="hover:text-white transition-colors">Category</li>
+          <li className="hover:text-white transition-colors">Category</li>
         </ul>
-        <ul className="[&>li]:flex [&>li]:items-center [&>li]:space-x-4 [&>li]:text-myDarkGray ">
+        <ul className="[&>li]:flex [&>li]:items-center [&>li]:space-x-4 [&>li]:text-myDarkGray [&>li]:cursor-pointer ">
           <li className="font-semibold text-lg ">FOLLOW US</li>
-          <li>
+          <li className="hover:text-white transition-colors">
             <AiFillFacebook className="text-[30px]" />
             <span>FACEBOOK</span>
           </li>
-          <li>
+          <li className="hover:text-white transition-colors">
             <AiFillTwitterSquare className="text-[30px]" />
             <span>TWITTER</span>
           </li>
-          <li>
+          <li className="hover:text-white transition-colors">
             <FaInstagramSquare className="text-[30px]" />
             <span>INSTAGRAM</span>
           </li>
@@ -49,7 +49,10 @@ export const Footer = () => {
                 placeholder="Email Address"
                 className="bg-transparent border-2 border-white p-2 placeholder:text-white focus:outline-none"
               />
-              <button className="bg-white text-myDarkGray p-2" disabled>
+              <button
+                className="bg-white text-myDarkGray p-2 hover:bg-myDarkGray hover:text-white transition-colors cursor-pointer"
+                disabled
+              >
                 SUBSCRIBE!
               </button>
             </form>

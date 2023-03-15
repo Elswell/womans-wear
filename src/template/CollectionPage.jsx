@@ -13,6 +13,7 @@ export default function CollectionPage({ data }) {
   const [price, setPrice] = useState([0, 250]);
   const [filteredSize, setFilteredSize] = useState();
   const [filteredPrice, setFilteredPrice] = useState();
+  const [error, setError] = useState(false);
 
   const { products: collectionProducts } = data.allShopifyCollection.nodes[0];
   const [current, setCurrent] = useState(collectionProducts);
@@ -54,19 +55,16 @@ export default function CollectionPage({ data }) {
     }
   };
 
-  const resetFilter = () => {
-    setCurrent(collectionProducts);
-    setPrice([0, 250]);
-    setSize([]);
-  };
-
   useEffect(() => {
     if (!filteredPrice || !filteredSize) {
       console.log("One or more filtered arrays are undefined");
       return;
     }
 
-    const filteredProducts = filteredPrice.concat(filteredSize);
+    const filteredProducts = collectionProducts.concat(
+      filteredSize,
+      filteredPrice
+    );
 
     const repeatingProducts = filteredProducts.filter(
       (product, index, self) => {
@@ -75,7 +73,7 @@ export default function CollectionPage({ data }) {
     );
 
     if (repeatingProducts.length === 0) {
-      console.log("empty");
+      setError(false);
       return;
     } else {
       setCurrent(repeatingProducts);
@@ -97,7 +95,7 @@ export default function CollectionPage({ data }) {
         sidebar={
           <FilterSidebar
             onSubmit={(range, productSize) => handleFilter(range, productSize)}
-            onReset={() => resetFilter()}
+            emptyError={error}
           />
         }
       />

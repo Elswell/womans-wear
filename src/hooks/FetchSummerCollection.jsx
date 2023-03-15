@@ -10,6 +10,7 @@ const getSummer = graphql`
         title
         handle
         descriptionHtml
+        tags
         collections {
           title
         }
