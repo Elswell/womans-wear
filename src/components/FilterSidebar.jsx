@@ -75,12 +75,6 @@ export const FilterSidebar = ({ onSubmit, emptyError }) => {
     }
   };
 
-  const clearFilters = () => {
-    setRange([0, 250]);
-    setProductSize([]);
-    setProductColor([]);
-  };
-
   return (
     <div className="flex flex-col space-y-4 mx-4">
       {!productSize.length || !range ? null : (

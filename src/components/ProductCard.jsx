@@ -7,8 +7,6 @@ export const ProductCard = (data) => {
   const { amount, currencyCode } = data.priceRangeV2.maxVariantPrice;
   const image = getImage(data.featuredImage);
 
-  console.log(data.tags);
-
   return (
     <Link to={`/product/` + handle}>
       <GatsbyImage image={image} alt="alt" className="w-[344px] h-[450px]" />

@@ -50,8 +50,6 @@ export default function CollectionPage({ data }) {
     if (range && productSize) {
       setPrice(range);
       setSize(productSize);
-    } else {
-      setSize(["S", "M", "L", "XL"]);
     }
   };
 
@@ -61,10 +59,7 @@ export default function CollectionPage({ data }) {
       return;
     }
 
-    const filteredProducts = collectionProducts.concat(
-      filteredSize,
-      filteredPrice
-    );
+    const filteredProducts = filteredPrice.concat(filteredSize);
 
     const repeatingProducts = filteredProducts.filter(
       (product, index, self) => {
@@ -73,8 +68,7 @@ export default function CollectionPage({ data }) {
     );
 
     if (repeatingProducts.length === 0) {
-      setError(false);
-      return;
+      setCurrent(collectionProducts);
     } else {
       setCurrent(repeatingProducts);
     }
