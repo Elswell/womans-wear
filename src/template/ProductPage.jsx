@@ -14,20 +14,25 @@ import { cls } from "../util/cls";
 import useStore from "../context/StoreContext";
 
 export default function ProductPage({ data }) {
-  const { title, descriptionHtml, featuredImage, options, variants } =
+  const { title, descriptionHtml, featuredImage, options, variants, media } =
     data.shopifyProduct;
   const [color, size] = options;
   const { amount, currencyCode } =
     data.shopifyProduct.priceRangeV2.maxVariantPrice;
   const image = getImage(featuredImage);
 
+  const [currentImage, setCurrentImage] = useState();
+  const imagePreview = getImage(currentImage);
+
   const [selectedOptions, setSelectedOptions] = useState({
     color: null,
     size: null,
     quantity: 1,
+    image: null,
   });
 
   const [variantId, setVariantId] = useState();
+  const [loading, setLoading] = useState(false);
   const { addVariantToCart, removeLineItem, error, checkout } = useStore();
 
   const handleQuantity = (bool) => {
@@ -50,6 +55,21 @@ export default function ProductPage({ data }) {
   };
 
   useEffect(() => {
+    if (!selectedOptions.color) {
+      return;
+    } else {
+      variants.forEach((variant) => {
+        if (variant.title.includes(selectedOptions.color)) {
+          setSelectedOptions({
+            ...selectedOptions,
+            image: variant.image.gatsbyImageData,
+          });
+        }
+      });
+    }
+  }, [selectedOptions.color]);
+
+  useEffect(() => {
     const combinedVariant =
       selectedOptions.color + " / " + selectedOptions.size;
     const productID = variants.forEach((item) => {
@@ -63,11 +83,28 @@ export default function ProductPage({ data }) {
     <Layout>
       <div className="max-w-[1440px] m-auto flex my-16 mob:flex-col mob:items-center lg:items-start lg:flex-row ">
         <div className="flex flex-1 flex-col space-y-2 relative">
-          <GatsbyImage
-            image={image}
-            alt="alt"
-            className="w-[624px] h-[790px]"
-          />
+          <div className="flex flex-col">
+            {loading ? (
+              <p>Loading...</p>
+            ) : (
+              <GatsbyImage
+                image={selectedOptions.image ? selectedOptions.image : image}
+                alt="featured-product-image"
+                className="w-[624px] h-[790px]"
+                onStartLoad={() => setLoading(true)}
+                onLoad={() => setLoading(false)}
+              />
+            )}
+            <div className="grid grid-cols-6 max-w-[624px] mt-2">
+              {media.map((image, i) => (
+                <GatsbyImage
+                  image={image.image.gatsbyImageData}
+                  alt="variant-product-image"
+                  className="w-[76px] h-[96px]"
+                />
+              ))}
+            </div>
+          </div>
           <div className="items-center justify-center space-x-4 -ml-24 hidden">
             <span className="font-semibold">SHARE:</span> <FaFacebookF />{" "}
             <FaTwitter /> <AiFillInstagram />
@@ -252,6 +289,17 @@ export const query = graphql`
         shopifyId
         title
         availableForSale
+        image {
+          gatsbyImageData
+        }
+      }
+      media {
+        ... on ShopifyMediaImage {
+          id
+          image {
+            gatsbyImageData
+          }
+        }
       }
       featuredImage {
         gatsbyImageData

@@ -11,6 +11,17 @@
   display: hidden;
 }
 
+.color-SafetyOrange {
+  background-color: #ff5f15;
+}
+
+.color-PeacockBlue {
+  background-color: #326872;
+}
+.color-GumLeaf {
+  background-color: #80b186;
+}
+
 .color-Forest {
   background-color: #228b22;
 }
@@ -40,7 +51,7 @@
 }
 
 .color-Stripe {
-  background-color: linear-gradient(to bottom right, #33ccff 0%, #ff99cc 100%);
+  background-color: linear-gradient(to bottom right, gray 0%, black 100%);
   border: 1px #e6e6e6 solid;
 }
 
