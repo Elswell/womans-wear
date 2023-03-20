@@ -33,7 +33,7 @@ export default function ProductPage({ data }) {
 
   const [variantId, setVariantId] = useState();
   const [loading, setLoading] = useState(false);
-  const { addVariantToCart, removeLineItem, error, checkout } = useStore();
+  const { addVariantToCart, error } = useStore();
 
   const handleQuantity = (bool) => {
     if (bool) {
@@ -72,7 +72,7 @@ export default function ProductPage({ data }) {
   useEffect(() => {
     const combinedVariant =
       selectedOptions.color + " / " + selectedOptions.size;
-    const productID = variants.forEach((item) => {
+    variants.forEach((item) => {
       if (item.title === combinedVariant) {
         setVariantId(item.shopifyId);
       }
@@ -81,21 +81,21 @@ export default function ProductPage({ data }) {
 
   return (
     <Layout>
-      <div className="max-w-[1440px] m-auto flex my-16 mob:flex-col mob:items-center lg:items-start lg:flex-row ">
+      <div className="px-2 lg:px-0 max-w-[1440px] m-auto flex my-16 mob:flex-col mob:items-center lg:items-start lg:flex-row ">
         <div className="flex flex-1 flex-col space-y-2 relative">
-          <div className="flex flex-col">
+          <div className="flex flex-col lg:mr-4">
             {loading ? (
               <p>Loading...</p>
             ) : (
               <GatsbyImage
                 image={selectedOptions.image ? selectedOptions.image : image}
                 alt="featured-product-image"
-                className="w-[624px] h-[790px]"
+                className="max-w-[624px] max-h-[790px]"
                 onStartLoad={() => setLoading(true)}
                 onLoad={() => setLoading(false)}
               />
             )}
-            <div className="grid grid-cols-6 max-w-[624px] mt-2">
+            <div className="flex flex-wrap justify-between max-w-[624px] mt-2">
               {media.map((image, i) => (
                 <GatsbyImage
                   image={image.image.gatsbyImageData}
@@ -110,21 +110,15 @@ export default function ProductPage({ data }) {
             <FaTwitter /> <AiFillInstagram />
           </div>
         </div>
-        <div className="flex flex-col px-4">
-          <h2 className="font-medium text-[48px] max-w-[70%]">{title}</h2>
+        <div className="flex flex-col items-center mt-8 lg:mt-0 lg:items-start max-w-[624px] w-full flex-wrap ">
+          <h2 className="font-medium text-2xl w-2/3 lg:w-full lg:leading-[50px] lg:text-[48px] ">
+            {title}
+          </h2>
           <div className="flex flex-col space-y-2">
             <span className="text-sm">SELECT COLOR</span>
             <Formik>
               {({ values }) => (
-                <Form
-                  className="flex w-full flex-wrap"
-                  onChange={(e) =>
-                    setSelectedOptions({
-                      ...selectedOptions,
-                      color: e.target.value,
-                    })
-                  }
-                >
+                <Form className="flex w-full flex-wrap">
                   {color.values.map((data, i) => (
                     <label
                       className={cls(
@@ -136,7 +130,17 @@ export default function ProductPage({ data }) {
                       )}
                       key={i}
                     >
-                      <Field type="radio" value={data} className="hidden" />
+                      <Field
+                        type="radio"
+                        value={data}
+                        className="hidden"
+                        onChange={(e) =>
+                          setSelectedOptions({
+                            ...selectedOptions,
+                            color: e.target.value,
+                          })
+                        }
+                      />
                       <span
                         className={`w-[25px] h-[25px] color-${data.replace(
                           /\s+/g,
@@ -153,15 +157,7 @@ export default function ProductPage({ data }) {
             <span className="text-sm">SELECT SIZE</span>
             <Formik>
               {({ values }) => (
-                <Form
-                  className="flex space-x-4"
-                  onChange={(e) =>
-                    setSelectedOptions({
-                      ...selectedOptions,
-                      size: e.target.value,
-                    })
-                  }
-                >
+                <Form className="flex space-x-4">
                   {size.values.map((data, i) => (
                     <label
                       className={cls(
@@ -173,7 +169,17 @@ export default function ProductPage({ data }) {
                       )}
                       key={i}
                     >
-                      <Field type="radio" value={data} className="hidden" />
+                      <Field
+                        type="radio"
+                        value={data}
+                        className="hidden"
+                        onChange={(e) =>
+                          setSelectedOptions({
+                            ...selectedOptions,
+                            size: e.target.value,
+                          })
+                        }
+                      />
                       <span className="w-[45px] h-[45px] text-center flex items-center justify-center text-myDarkGray">
                         {data}
                       </span>
@@ -221,7 +227,7 @@ export default function ProductPage({ data }) {
               </span>
             </div>
           </div>
-          <div className="flex space-x-8">
+          <div className="flex flex-col space-y-8 lg:space-y-0 lg:flex-row lg:space-x-8">
             <Button
               className="self-start"
               variant="black"

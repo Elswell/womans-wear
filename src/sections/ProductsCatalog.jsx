@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { Field, Form, Formik } from "formik";
 import FetchSummerColection from "../hooks/FetchSummerCollection";
-import FetchBestCollection from "../hooks/FetchBestCollection";
 import FetchActiveWearCollection from "../hooks/FetchActiveWearCollection";
 import { Button } from "../components";
 import { Link } from "gatsby";
-// import FetchTrendingCollection from "../hooks/FetchTrendingCollection";
 
 export const ProductsCatalog = () => {
   const [value, setValue] = useState("summer");
@@ -26,8 +24,9 @@ export const ProductsCatalog = () => {
                   role="group"
                   className="flex md:flex-col mob:flex-row items-start justify-center mob:space-x-1 md:space-x-0  lg:space-y-2 [&>label]:flex [&>label]:space-x-1  "
                 >
-                  <label>
+                  <label htmlFor="summer">
                     <Field
+                      id="summer"
                       type="radio"
                       name="collection"
                       value="summer"
@@ -35,8 +34,9 @@ export const ProductsCatalog = () => {
                     />
                     <span>COLLECTION: SUMMER</span>
                   </label>
-                  <label>
+                  <label htmlFor="active-wear">
                     <Field
+                      id="active-wear"
                       type="radio"
                       name="collection"
                       value="active-wear"

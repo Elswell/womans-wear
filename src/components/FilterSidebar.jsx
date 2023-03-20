@@ -31,7 +31,7 @@ const colors = [
   "Cream",
 ];
 
-export const FilterSidebar = ({ onSubmit, emptyError }) => {
+export const FilterSidebar = ({ onSubmit, emptyError, onReset }) => {
   const [toggleSize, setToggleSize] = useState(true);
   const [toggleColor, setToggleColor] = useState(true);
   const [togglePrice, setTogglePrice] = useState(true);
@@ -51,6 +51,12 @@ export const FilterSidebar = ({ onSubmit, emptyError }) => {
 
   const handleSubmit = () => {
     onSubmit(range, productSize);
+  };
+
+  const resetFilters = () => {
+    setProductSize(slug === "active-wear" ? activeSizes : sizes);
+    setRange([0, 250]);
+    onReset(productSize, range);
   };
 
   const handleColor = (e) => {
@@ -237,6 +243,14 @@ export const FilterSidebar = ({ onSubmit, emptyError }) => {
         onClick={() => handleSubmit()}
       >
         Apply
+      </Button>
+      <Button
+        variant="gray"
+        size="normal"
+        className="mt-4"
+        onClick={() => resetFilters()}
+      >
+        Reset FIlters
       </Button>
     </div>
   );

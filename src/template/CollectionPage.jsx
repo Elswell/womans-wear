@@ -74,6 +74,12 @@ export default function CollectionPage({ data }) {
     }
   }, [filteredPrice, filteredSize]);
 
+  const resetFilters = (range, size) => {
+    setPrice(range);
+    setSize(size);
+    setCurrent(collectionProducts);
+  };
+
   useEffect(() => {
     refetchPriceRange();
     refetchSize();
@@ -89,6 +95,7 @@ export default function CollectionPage({ data }) {
         sidebar={
           <FilterSidebar
             onSubmit={(range, productSize) => handleFilter(range, productSize)}
+            onReset={(range, productSize) => resetFilters(range, productSize)}
             emptyError={error}
           />
         }
