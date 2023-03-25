@@ -97,7 +97,9 @@ const MobileBody = () => {
 };
 
 const Cart = ({ data }) => {
-  const { checkout, error } = useStore();
+  const { checkout, error, cart } = useStore();
+
+  console.log(checkout?.totalPriceV2?.amount);
 
   return (
     <Layout>

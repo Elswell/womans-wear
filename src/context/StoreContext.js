@@ -70,7 +70,7 @@ export const StoreProvider = ({ children }) => {
       setCheckoutItem(newCheckout);
     };
     initializeCheckout();
-  }, []);
+  }, [cart]);
 
   const addVariantToCart = async (variantId, quantity) => {
     if (quantity === 0) {

@@ -95,12 +95,12 @@ export default function ProductPage({ data }) {
                 onLoad={() => setLoading(false)}
               />
             )}
-            <div className="flex flex-wrap justify-between max-w-[624px] mt-2">
+            <div className="flex flex-wrap gap-y-2 justify-between max-w-[624px] mt-2">
               {media.map((image, i) => (
                 <GatsbyImage
                   image={image.image.gatsbyImageData}
                   alt="variant-product-image"
-                  className="w-[76px] h-[96px]"
+                  className="w-[76px] h-[96px] self-start"
                 />
               ))}
             </div>

@@ -40,7 +40,9 @@ export const Navbar = () => {
             Elleven
           </Link>
           <ul className="items-center justify-center mob:hidden list-none lg:flex space-x-6 [&>li]:border-b-[1px] [&>li]:border-transparent [&>li]:cursor-pointer">
-            <li className="hover:border-primary">HOME</li>
+            <li className="hover:border-primary">
+              <Link to="/">HOME</Link>
+            </li>
             <li
               className="hover:border-primary"
               onClick={() => setToggleShop(!toggleShop)}
@@ -52,8 +54,8 @@ export const Navbar = () => {
             <li className="hover:border-primary">CONTACT US</li>
           </ul>
           <div className="mob:hidden lg:flex items-center  space-x-4">
-            <p>SIGN IN</p>
-            <p>CREATE AN ACCOUNT</p>
+            {/* <p>SIGN IN</p>
+            <p>CREATE AN ACCOUNT</p> */}
             <AiOutlineHeart className="text-[24px]" />
             <Link to="/cart" className="flex items-center">
               <HiOutlineShoppingBag className="text-[24px]" />
@@ -77,7 +79,7 @@ export const Navbar = () => {
       {toggleShop ? (
         <div
           ref={shopRef}
-          className="bg-[url('../assets/images/shopmenu.webp')] bg-no-repeat bg-cover bg-center absolute z-50 max-w-[1200px] m-auto left-0 right-0 shadow-lg bg-white flex px-10 py-8 space-x-[100px] "
+          className="bg-[url('../assets/images/shopmenu.jpg')] bg-no-repeat bg-cover bg-center absolute z-50 max-w-[1200px] m-auto left-0 right-0 shadow-lg bg-white flex px-10 py-8 space-x-[100px] "
         >
           <ul className="flex flex-col list-none [&>li]:text-myGray space-y-2">
             <li className="text-black text-lg font-medium mb-[16px] border-b-2 border-b-black">
