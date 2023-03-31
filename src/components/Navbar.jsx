@@ -62,7 +62,11 @@ export const Navbar = () => {
               <div className="flex flex-col text-xs">
                 <span>Shopping cart</span>
                 <span>
-                  {parsedTotal} {checkout?.subtotalPriceV2?.currencyCode}
+                  {(parsedTotal !== NaN) & (parsedTotal !== undefined)
+                    ? parsedTotal +
+                      " " +
+                      checkout?.subtotalPriceV2?.currencyCode
+                    : "Loading..."}
                 </span>
               </div>
             </Link>
