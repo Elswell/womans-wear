@@ -49,14 +49,14 @@ export const Navbar = () => {
             >
               SHOP
             </li>
-            <li className="hover:border-primary">BLOG</li>
+            {/* <li className="hover:border-primary">BLOG</li>
             <li className="hover:border-primary">SALE</li>
-            <li className="hover:border-primary">CONTACT US</li>
+            <li className="hover:border-primary">CONTACT US</li> */}
           </ul>
           <div className="mob:hidden lg:flex items-center  space-x-4">
-            {/* <p>SIGN IN</p>
-            <p>CREATE AN ACCOUNT</p> */}
-            <AiOutlineHeart className="text-[24px]" />
+            <Link to="/favorites">
+              <AiOutlineHeart className="text-[24px]" />
+            </Link>
             <Link to="/cart" className="flex items-center">
               <HiOutlineShoppingBag className="text-[24px]" />
               <div className="flex flex-col text-xs">

@@ -169,8 +169,6 @@ const Cart = ({ data }) => {
   );
 };
 
-export default Cart;
-
 export const Head = () => (
   <>
     <html lang="en" />
@@ -178,3 +176,5 @@ export const Head = () => (
     <meta name="description" content="Elleven Womans Wear" />
   </>
 );
+
+export default Cart;

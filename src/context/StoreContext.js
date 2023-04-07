@@ -22,6 +22,8 @@ const defaultValues = {
     lineItems: [],
     webUrl: "",
   },
+  favorites: [],
+  addFavorite: () => {},
 };
 
 const StoreContext = createContext(defaultValues);
@@ -34,6 +36,7 @@ export const StoreProvider = ({ children }) => {
   const [checkout, setCheckout] = useState(defaultValues.checkout);
   const [loading, setLoading] = useState(defaultValues.loading);
   const [error, setError] = useState(defaultValues.isEmpty);
+  const [favorites, setFavorites] = useState(defaultValues.favorites);
 
   const setCheckoutItem = (checkout) => {
     if (isBrowser) {
@@ -186,6 +189,14 @@ export const StoreProvider = ({ children }) => {
     }
   };
 
+  const addFavorite = (id) => {
+    if (favorites.includes(id)) {
+      setFavorites(favorites.filter((favId) => favId !== id));
+    } else {
+      setFavorites([...favorites, id]);
+    }
+  };
+
   return (
     <StoreContext.Provider
       value={{
@@ -196,6 +207,8 @@ export const StoreProvider = ({ children }) => {
         checkout,
         loading,
         error,
+        favorites,
+        addFavorite,
       }}
     >
       {children}
