@@ -1,5 +1,5 @@
 import React from "react";
-import { cls } from "../util/cls";
+import { cls } from "../../util/cls";
 
 const classes = {
   base: "focus:outline-none transition ease-in-out duration-100 transition-all",

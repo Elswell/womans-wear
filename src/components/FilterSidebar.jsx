@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { cls } from "../util/cls";
 import Slider from "@mui/material/Slider";
 import { Field, Form, Formik } from "formik";
-import { Button } from "./Button";
+import { Button } from "./ui/Button";
 import { useLocation } from "@reach/router";
 
 const sizes = ["S", "M", "L", "XL"];

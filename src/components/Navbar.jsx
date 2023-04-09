@@ -5,7 +5,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import useStore from "../context/StoreContext";
 import { useRef } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { Hamburger } from "./Hamburger";
+import { Hamburger } from "./ui/Hamburger";
 
 export const Navbar = () => {
   const { checkout } = useStore();

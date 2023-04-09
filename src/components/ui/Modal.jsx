@@ -1,5 +1,5 @@
 import React from "react";
-import { cls } from "../util/cls";
+import { cls } from "../../util/cls";
 import { AiFillCloseSquare, AiFillCheckSquare } from "react-icons/ai";
 import { BsExclamationSquareFill } from "react-icons/bs";
 

@@ -36,9 +36,8 @@ const Favorites = () => {
       <Container>
         <div className="flex flex-col w-full">
           <h2 className="text-[48px] text-center my-[62px]">Favorites</h2>
-
           <div className="flex flex-wrap space-x-4 mt-8 w-full">
-            {items.length > 0 ? (
+            {items.length > 0 && items !== undefined && items !== [] ? (
               items.map((data, i) => (
                 <ProductCard {...data} key={`favorite${i}`} />
               ))
