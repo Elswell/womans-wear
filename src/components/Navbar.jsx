@@ -49,9 +49,6 @@ export const Navbar = () => {
             >
               SHOP
             </li>
-            {/* <li className="hover:border-primary">BLOG</li>
-            <li className="hover:border-primary">SALE</li>
-            <li className="hover:border-primary">CONTACT US</li> */}
           </ul>
           <div className="mob:hidden lg:flex items-center  space-x-4">
             <Link to="/favorites">
@@ -62,11 +59,16 @@ export const Navbar = () => {
               <div className="flex flex-col text-xs">
                 <span>Shopping cart</span>
                 <span>
-                  {(parsedTotal !== NaN) & (parsedTotal !== undefined)
+                  {/* {parsedTotal !== NaN && parsedTotal !== undefined
                     ? parsedTotal +
                       " " +
                       checkout?.subtotalPriceV2?.currencyCode
-                    : "Loading..."}
+                    : "Loading..."} */}
+                  {parsedTotal
+                    ? parsedTotal +
+                      " " +
+                      checkout?.subtotalPriceV2?.currencyCode
+                    : "0 BGN"}
                 </span>
               </div>
             </Link>
