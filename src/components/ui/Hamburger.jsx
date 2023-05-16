@@ -25,9 +25,9 @@ export const Hamburger = ({ closeHamburger }) => {
   return (
     <div
       ref={hamburgerRef}
-      className="h-1/3 w-full bg-gray-100 absolute top-0 z-10 flex items-center px-4 space-x-8"
+      className="h-full w-full bg-gray-100 absolute top-0 z-10 items-center justify-center px-4 space-y-8 flex flex-col"
     >
-      <ul className="flex flex-col list-none [&>li]:text-myGray space-y-2 w-1/3 ">
+      <ul className="flex flex-col list-none [&>li]:text-myGray space-y-2 w-full ">
         <li className="text-black text-lg font-medium mb-[16px] border-b-2 border-b-black">
           CLOTHING
         </li>
@@ -41,7 +41,7 @@ export const Hamburger = ({ closeHamburger }) => {
         <li>Link</li>
         <li>Link</li>
       </ul>
-      <ul className="flex flex-col list-none [&>li]:text-myGray space-y-2 w-1/3 ">
+      <ul className="flex flex-col list-none [&>li]:text-myGray space-y-2 w-full ">
         <li className="text-black text-lg font-medium mb-[16px] border-b-2 border-b-black">
           MENU CATEGORY LIST
         </li>
@@ -51,7 +51,7 @@ export const Hamburger = ({ closeHamburger }) => {
         <li>Link</li>
         <li>Link</li>
       </ul>
-      <ul className="flex flex-col list-none [&>li]:text-myGray space-y-2 w-1/3">
+      <ul className="flex flex-col list-none [&>li]:text-myGray space-y-2 w-full">
         <li className="text-black text-lg font-medium mb-[16px] border-b-2 border-b-black">
           MENU CATEGORY LIST
         </li>

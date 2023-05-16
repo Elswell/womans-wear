@@ -102,7 +102,7 @@ export const FilterSidebar = ({ onSubmit, emptyError, onReset }) => {
           <div>
             <p className="text-2xl">Price</p>
             <div className="text-sm font-light">
-              <span>{range[0]} EUR</span> - <span>{range[1]} EUR</span>
+              <span>{range[0]} BGN</span> - <span>{range[1]} BGN</span>
             </div>
           </div>
         </div>
@@ -221,7 +221,7 @@ export const FilterSidebar = ({ onSubmit, emptyError, onReset }) => {
           )}
         >
           <div className="flex justify-between w-full sm:text-sm lg:text-lg">
-            <span>{range[0] + " EUR"}</span> <span>{range[1] + " EUR"}</span>
+            <span>{range[0] + " BGN"}</span> <span>{range[1] + " BGN"}</span>
           </div>
           <Slider
             value={range}
